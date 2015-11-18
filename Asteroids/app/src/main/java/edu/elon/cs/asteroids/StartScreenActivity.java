@@ -42,15 +42,22 @@ public class StartScreenActivity extends AppCompatActivity {
     }
 
     public void onPlay(View view) {
-        //TODO make intent that changes to PlayActivity
+        switchScreen(PlayActivity.class);
     }
 
     public void onScores(View view) {
-        //TODO make intent that changes to HighScoreActivity
+        switchScreen(HighScoreActivity.class);
     }
 
     public void onInstructions(View view) {
-        //TODO make intent that changes to InstructionsActivity
+        switchScreen(InstructionsActivity.class);
+
     }
+
+    private void switchScreen(Class<?> cls) {
+        intent = new Intent(getApplicationContext(), cls);
+        startActivity(intent);
+    }
+
 
 }
