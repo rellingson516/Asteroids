@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.view.Display;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 /**
  * Created by rellingson on 11/30/2015.
@@ -17,7 +19,7 @@ public class Asteroid {
     private final int STARTING_DISTANCE = 100;
     private final int MAX_HITS = 4;
 
-    private int hits;
+    public int hits;
 
     private int x, y;
     private int distance;
@@ -31,28 +33,17 @@ public class Asteroid {
 
     private final float SCALE = 1.0f;
 
-    public Asteroid(Context context, int x, int y, int speed, int hits) {
+    private Context context;
+
+    public Asteroid(Context context, int x, int y, int speed) {
         this.x = x;
         this.y = y;
         this.speed = speed;
+        this.context = context;
 
-        if(hits > MAX_HITS) {
-            this.hits = MAX_HITS;
-        } else {
-            this.hits = hits;
-        }
+        this.hits = MAX_HITS;
+        bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid1);
 
-        //get the image
-        switch (hits) {
-            case 1:
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid1);
-            case 2:
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid2);
-            case 3:
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid3);
-            case 4:
-                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid4);
-        }
 
         //scale
         width = bitmap.getWidth() * SCALE;
@@ -69,11 +60,33 @@ public class Asteroid {
     }
 
     public  void doDraw(Canvas canvas) {
-        //TODO add draw method
+        canvas.drawBitmap(bitmap,
+                null,
+                new Rect((int) (x - width/2), (int) (y - height/2),
+                        (int) (x + width/2), (int) (y + height/2)),
+                null);
     }
 
     public void doUpdate(double elapsed) {
-        //TODO add update method
+        //change the image based on how many times it's been hit
+        switch (hits) {
+            case 1:
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid1);
+                break;
+            case 2:
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid2);
+                break;
+            case 3:
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid3);
+                break;
+            case 4:
+                bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.asteroid4);
+                break;
+        }
+    }
+
+    public void hit() {
+        hits--;
     }
 
 
