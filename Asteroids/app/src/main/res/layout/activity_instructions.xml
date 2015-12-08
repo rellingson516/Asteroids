@@ -16,4 +16,13 @@
         android:gravity="center"
         android:textColor="#32cd32" />
 
+    <TextView
+        android:text="@string/howToPlay"
+        android:id="@+id/howToPlay"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="60dp"
+        android:gravity="center"
+        android:textColor="#32cd32"  />
+
 </LinearLayout>

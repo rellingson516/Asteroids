@@ -12,14 +12,17 @@ import java.awt.font.TextAttribute;
 public class InstructionsActivity extends AppCompatActivity {
 
     TextView title;
+    TextView instructions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructions);
         title = (TextView) findViewById(R.id.instTitle);
+        instructions = (TextView) findViewById(R.id.howToPlay);
         Typeface font = Typeface.createFromAsset(getAssets(), "pixel-font.ttf");
         title.setTypeface(font);
+        instructions.setTypeface(font);
     }
 
 }

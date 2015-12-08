@@ -10,4 +10,8 @@
     <string name="title_activity_play">PlayActivity</string>
     <string name="title_activity_high_score">HighScoreActivity</string>
     <string name="title_activity_instructions">InstructionsActivity</string>
+    <string name="title_activity_game_over">GameOverActivity</string>
+    <string name="gameOver">Game Over</string>
+    <string name="backToMenu">Return to Menu</string>
+    <string name="howToPlay">You have one minute to destroy as many asteroids as possible. Aim with your phone and touch the screen to shoot.</string>
 </resources>
